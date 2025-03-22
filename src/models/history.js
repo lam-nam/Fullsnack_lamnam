@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class History extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,23 +11,19 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  User.init(
+  History.init(
     {
-      // id: DataTypes.STRING,
-      email: DataTypes.STRING,
-      password: DataTypes.STRING,
-      firstName: DataTypes.STRING,
-      lastName: DataTypes.STRING,
-      address: DataTypes.STRING,
-      gender: DataTypes.BOOLEAN,
-      typeRole: DataTypes.STRING,
-      keyRole: DataTypes.STRING,
+      patientId: DataTypes.INTEGER,
+      docterId: DataTypes.INTEGER,
+      description: DataTypes.TEXT,
     },
 
     {
       sequelize,
-      modelName: "User",
+      modelName: "History",
     }
   );
-  return User;
+  return History;
 };
+
+// you can comprehend that files in models (except index.js) is a define for tables in database
